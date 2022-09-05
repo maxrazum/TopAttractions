@@ -13,13 +13,13 @@ db.once("open", () => {
 
 const seedDB = async () => {
     await Attraction.deleteMany({});
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < cities.length; i++) {
         const place = new Attraction({
-            location: `${cities.city}`,
-            title: `${cities.title}`
+            location: `${cities[i].city}`,
+            title: `${cities[i].title}`
         })
         await place.save();
     }
-}
+};
 
 seedDB().then(() => db.close());

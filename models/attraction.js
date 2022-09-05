@@ -8,4 +8,4 @@ const AttractionSchema = new Schema({
     location: String
 });
 
-module.exports = mongoose.model;('Attraction', AttractionSchema);
+module.exports = mongoose.model('Attraction', AttractionSchema);
