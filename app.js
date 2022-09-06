@@ -1,8 +1,9 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override');
-const Attraction= require('./models/attraction');
+const Attraction = require('./models/attraction');
 
 mongoose.connect('mongodb://localhost:27017/TopAttractions');
 
@@ -15,10 +16,11 @@ db.once("open", () => {
 
 const app = express();
 
+app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use(express.urlencoded({ extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
 app.get('/', (req, res) => {
@@ -27,7 +29,7 @@ app.get('/', (req, res) => {
 
 app.get('/attractions', async (req, res) => {
     const attractions = await Attraction.find({});
-    res.render('attractions/index', {attractions})
+    res.render('attractions/index', { attractions })
 });
 
 app.get('/attractions/new', (req, res) => {
@@ -42,12 +44,12 @@ app.post('/attractions', async (req, res) => {
 
 app.get('/attractions/:id', async (req, res) => {
     const attraction = await Attraction.findById(req.params.id)
-    res.render('attractions/show', {attraction})
+    res.render('attractions/show', { attraction })
 });
 
 app.get('/attractions/:id/edit', async (req, res) => {
     const attraction = await Attraction.findById(req.params.id)
-    res.render('attractions/edit', {attraction})
+    res.render('attractions/edit', { attraction })
 });
 
 app.put('/attractions/:id', async (req, res) => {

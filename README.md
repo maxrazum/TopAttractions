@@ -32,7 +32,11 @@ npm i nodemon
 ```
 npm i method-override
 ```
-5) Run the App:
+5) Install ejs-mate:
+```
+npm i ejs-mate
+```
+6) Run the App:
 ```
 nodemon index.js
 ```
