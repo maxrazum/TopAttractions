@@ -42,18 +42,24 @@ app.post('/attractions', async (req, res) => {
 
 app.get('/attractions/:id', async (req, res) => {
     const attraction = await Attraction.findById(req.params.id)
-    res.render('attractions/show', {attraction});
+    res.render('attractions/show', {attraction})
 });
 
 app.get('/attractions/:id/edit', async (req, res) => {
     const attraction = await Attraction.findById(req.params.id)
-    res.render('attractions/edit', {attraction});
+    res.render('attractions/edit', {attraction})
 });
 
 app.put('/attractions/:id', async (req, res) => {
     const { id } = req.params;
     const attraction = await Attraction.findByIdAndUpdate(id, { ...req.body.attraction });
     res.redirect(`/attractions/${attraction._id}`)
+});
+
+app.delete('/attractions/:id', async (req, res) => {
+    const { id } = req.params;
+    await Attraction.findByIdAndDelete(id);
+    res.redirect('/attractions')
 });
 
 app.listen(3000, () => {
