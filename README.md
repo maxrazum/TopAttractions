@@ -28,7 +28,11 @@ npm i express ejs mongoose
 ```
 npm i nodemon
 ```
-4) Run the App:
+4) Install override:
+```
+npm i method-override
+```
+5) Run the App:
 ```
 nodemon index.js
 ```
