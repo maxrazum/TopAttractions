@@ -6,6 +6,10 @@
     <h2>
         <%= attraction.location %>
     </h2>
+    <img src="<%= attraction.image %> " alt="...">
+    <p>
+        <%= attraction.description %>
+    </p>
     <p><a href="/attractions/<%= attraction._id %>/edit">Edit</a></p>
     <p>
     <form action="/attractions/<%= attraction._id %>?_method=DELETE" method="POST">

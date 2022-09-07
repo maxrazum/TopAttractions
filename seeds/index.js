@@ -14,9 +14,13 @@ db.once("open", () => {
 const seedDB = async () => {
     await Attraction.deleteMany({});
     for (let i = 0; i < cities.length; i++) {
+        const price = Math.floor(Math.random() * 10) + 10;
         const place = new Attraction({
             location: `${cities[i].city}`,
-            title: `${cities[i].title}`
+            title: `${cities[i].title}`,
+            image: `${cities[i].image}`,
+            description: 'North America is filled with must see attractions. Hundreds of locations draw millions of tourists to natural landmarks, historic sites and exciting places. Some are old, some are new. Some are geological wonders. Some are manmade structures.',
+            price
         })
         await place.save();
     }
