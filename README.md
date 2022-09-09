@@ -36,7 +36,11 @@ npm i method-override
 ```
 npm i ejs-mate
 ```
-6) Run the App:
+6) Install joi:
+```
+npm i joi
+```
+7) Run the App:
 ```
 nodemon index.js
 ```
