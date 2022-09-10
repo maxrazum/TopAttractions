@@ -3,10 +3,11 @@ const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
 const { attractionSchema } = require('./schema');
-const catchAsync = require('./utils/catchAsynk');
+const catchAsync = require('./utils/catchAsync');
 const methodOverride = require('method-override');
 const Attraction = require('./models/attraction');
 const ExpressError = require('./utils/ExpressError');
+const Review = require('./models/review');
 
 mongoose.connect('mongodb://localhost:27017/TopAttractions');
 
@@ -75,6 +76,15 @@ app.delete('/attractions/:id', catchAsync(async (req, res, next) => {
     const { id } = req.params;
     await Attraction.findByIdAndDelete(id);
     res.redirect('/attractions')
+}));
+
+app.post('/attractions/:id/reviews', catchAsync(async (req, res) => {
+    const attraction = await Attraction.findById(req.params.id);
+    const review = new Review(req.body.review);
+    attraction.reviews.push(review);
+    await review.save();
+    await attraction.save();
+    res.redirect(`/attractions/${attraction._id}`);
 }));
 
 app.all('*', (req, res, next) => {
