@@ -2,12 +2,13 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
-const { attractionSchema, reviewSchema } = require('./schemas');
-const catchAsync = require('./utils/catchAsync');
 const methodOverride = require('method-override');
-const Attraction = require('./models/attraction');
+
 const ExpressError = require('./utils/ExpressError');
-const Review = require('./models/review');
+
+const attractions = require('./routes/attractions');
+const reviews = require('./routes/reviews')
+
 
 mongoose.connect('mongodb://localhost:27017/TopAttractions');
 
@@ -27,82 +28,12 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
-const validateAttraction = (req, res, next) => {
-    const { error } = attractionSchema.validate(req.body);
-    if (error) {
-        const msg = error.details.map(el => el.message).join(',')
-        throw new ExpressError(msg, 400)
-    } else {
-        next();
-    }
-}
-
-const validateReview = (req, res, next) => {
-    const { error} = reviewSchema.validate(req.body);
-    if (error) {
-        const msg = error.details.map(el => el.message).join(',')
-        throw new ExpressError(msg, 400)
-    } else {
-        next();
-    }
-}
+app.use('/attractions', attractions);
+app.use('/attractions/:id/reviews', reviews);
 
 app.get('/', (req, res) => {
     res.render('home')
 });
-
-app.get('/attractions', catchAsync(async (req, res, next) => {
-    const attractions = await Attraction.find({});
-    res.render('attractions/index', { attractions })
-}));
-
-app.get('/attractions/new', (req, res) => {
-    res.render('attractions/new')
-});
-
-app.post('/attractions', validateAttraction, catchAsync(async (req, res, next) => {
-    const attraction = new Attraction(req.body.attraction);
-    await attraction.save();
-    res.redirect(`/attractions/${attraction._id}`)
-}));
-
-app.get('/attractions/:id', catchAsync(async (req, res, next) => {
-    const attraction = await Attraction.findById(req.params.id).populate('reviews');
-    res.render('attractions/show', { attraction })
-}));
-
-app.get('/attractions/:id/edit', catchAsync(async (req, res, next) => {
-    const attraction = await Attraction.findById(req.params.id)
-    res.render('attractions/edit', { attraction })
-}));
-
-app.put('/attractions/:id', validateAttraction, catchAsync(async (req, res, next) => {
-    const { id } = req.params;
-    const attraction = await Attraction.findByIdAndUpdate(id, { ...req.body.attraction });
-    res.redirect(`/attractions/${attraction._id}`)
-}));
-
-app.delete('/attractions/:id', catchAsync(async (req, res, next) => {
-    const { id } = req.params;
-    await Attraction.findByIdAndDelete(id);
-    res.redirect('/attractions')
-}));
-
-app.post('/attractions/:id/reviews', validateReview, catchAsync(async (req, res) => {
-    const attraction = await Attraction.findById(req.params.id);
-    const review = new Review(req.body.review);
-    attraction.reviews.push(review);
-    await review.save();
-    await attraction.save();
-    res.redirect(`/attractions/${attraction._id}`);
-}));
-
-app.delete('/attractions/:id/reviews/:reviewId', catchAsync(async (req, res) => {
-    const { id, reviewId } = req.params;
-    await Attraction.findByIdAndUpdate(id, { $pull: {reviews: reviewId} });
-    await Review.findByIdAndDelete(reviewId);
-    res.redirect(`/attractions/${id}`);
-}));
 
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found', 404))
