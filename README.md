@@ -44,9 +44,9 @@ npm i joi
 ```
 npm i express-session
 ```
-8) Install joi:
+8) Install flash:
 ```
-npm i joi
+npm i connect-flash
 ```
 8) Run the App:
 ```
