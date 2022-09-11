@@ -40,7 +40,15 @@ npm i ejs-mate
 ```
 npm i joi
 ```
-7) Run the App:
+7) Install express session:
+```
+npm i express-session
+```
+8) Install joi:
+```
+npm i joi
+```
+8) Run the App:
 ```
 nodemon index.js
 ```
