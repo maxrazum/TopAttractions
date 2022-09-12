@@ -48,7 +48,11 @@ npm i express-session
 ```
 npm i connect-flash
 ```
-8) Run the App:
+9) Install passport:
+```
+npm i passport passport-local passport-local-mongoose
+```
+10) Run the App:
 ```
 nodemon index.js
 ```
