@@ -12,9 +12,9 @@ const User = require('./models/user');
 
 const ExpressError = require('./utils/ExpressError');
 
-const attractions = require('./routes/attractions');
-const reviews = require('./routes/reviews');
-const { serializeUser } = require('passport');
+const attractionRoutes = require('./routes/attractions');
+const reviewRoutes = require('./routes/reviews');
+const userRoutes = require('./routes/users');
 
 
 mongoose.connect('mongodb://localhost:27017/TopAttractions');
@@ -62,8 +62,9 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/attractions', attractions);
-app.use('/attractions/:id/reviews', reviews);
+app.use('/', userRoutes);
+app.use('/attractions', attractionRoutes);
+app.use('/attractions/:id/reviews', reviewRoutes);
 
 app.get('/', (req, res) => {
     res.render('home')
