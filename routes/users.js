@@ -15,10 +15,13 @@ router.post('/register', catchAsync(async (req, res) => {
         const { email, username, password } = req.body;
         const user = new User({ email, username });
         const registerUser = await User.register(user, password);
-        req.flash('success', 'Welcome to TopAttractions');
-        res.redirect('/attractions');
-    } catch (e) {
-        req.flash('error, e.message');
+        req.login(registerUser, err => {
+            if (err) return next(err);
+            req.flash('success', 'Welcome to TopAttractions');
+            res.redirect('/attractions');
+        })
+    } catch (err) {
+        req.flash('error, err.message');
         res.redirect('register');
     }
 }));
@@ -33,8 +36,8 @@ router.post('/login', passport.authenticate('local', { failureFlash: true, failu
 });
 
 router.get('/logout', async (req, res, next) => {
-    req.logout((e) => {
-        if(e) { return next(e); }
+    req.logout((err) => {
+        if (err) { return next(err); }
         req.flash('success', 'Goodbye');
         res.redirect('/attractions');
     });
