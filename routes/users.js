@@ -30,9 +30,11 @@ router.get('/login', (req, res) => {
     res.render('users/login');
 });
 
-router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
-    req.flash('success', 'Welcome Back')
-    res.redirect('/attractions');
+router.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login', keepSessionInfo: true }), (req, res) => {
+    req.flash('success', 'Welcome Back');
+    const redirectUrl = req.session.returnTo || '/attractions';
+    delete req.session.returnTo;
+    res.redirect(redirectUrl);
 });
 
 router.get('/logout', async (req, res, next) => {
