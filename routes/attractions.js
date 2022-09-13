@@ -26,7 +26,12 @@ router.post('/', isLoggedIn, validateAttraction, catchAsync(async (req, res, nex
 }));
 
 router.get('/:id', catchAsync(async (req, res, next) => {
-    const attraction = await Attraction.findById(req.params.id).populate('reviews').populate('author');
+    const attraction = await Attraction.findById(req.params.id).populate({
+        path: 'reviews',
+        populate: {
+            path: 'author'
+        }
+    }).populate('author');
     if (!attraction) {
         req.flash('error', 'Cannot find that Attraction');
         return res.redirect('/attractions');

@@ -1,4 +1,5 @@
 const Attraction = require("./models/attraction");
+const Review = require('./models/review');
 
 const ExpressError = require("./utils/ExpressError");
 
@@ -28,6 +29,16 @@ module.exports.isAuthor = async (req, res, next) => {
     const { id } = req.params;
     const attraction = await Attraction.findById(id);
     if (!attraction.author.equals(req.user._id)) {
+        req.flash('error', 'You do not have permission to do that');
+        return res.redirect(`/attractions/${id}`);
+    }
+    next();
+}
+
+module.exports.isReviewAuthor = async (req, res, next) => {
+    const { id, reviewId } = req.params;
+    const review = await Review.findById(reviewId);
+    if (!review.author.equals(req.user._id)) {
         req.flash('error', 'You do not have permission to do that');
         return res.redirect(`/attractions/${id}`);
     }
