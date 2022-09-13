@@ -4,22 +4,9 @@ const router = express.Router();
 const Attraction = require('../models/attraction');
 
 const catchAsync = require('../utils/catchAsync');
-const ExpressError = require('../utils/ExpressError');
 
-const { attractionSchema } = require('../schemas');
+const { isLoggedIn, isAuthor, validateAttraction } = require('../middleware');
 
-const { isLoggedIn } = require('../middleware');
-
-
-const validateAttraction = (req, res, next) => {
-    const { error } = attractionSchema.validate(req.body);
-    if (error) {
-        const msg = error.details.map(el => el.message).join(',')
-        throw new ExpressError(msg, 400)
-    } else {
-        next();
-    }
-}
 
 router.get('/', catchAsync(async (req, res, next) => {
     const attractions = await Attraction.find({});
@@ -47,7 +34,7 @@ router.get('/:id', catchAsync(async (req, res, next) => {
     res.render('attractions/show', { attraction })
 }));
 
-router.get('/:id/edit', isLoggedIn, catchAsync(async (req, res, next) => {
+router.get('/:id/edit', isLoggedIn, isAuthor, catchAsync(async (req, res, next) => {
     const attraction = await Attraction.findById(req.params.id)
     if (!attraction) {
         req.flash('error', 'Cannot find that Attraction');
@@ -56,14 +43,14 @@ router.get('/:id/edit', isLoggedIn, catchAsync(async (req, res, next) => {
     res.render('attractions/edit', { attraction })
 }));
 
-router.put('/:id', isLoggedIn, validateAttraction, catchAsync(async (req, res, next) => {
+router.put('/:id', isLoggedIn, isAuthor, validateAttraction, catchAsync(async (req, res, next) => {
     const { id } = req.params;
     const attraction = await Attraction.findByIdAndUpdate(id, { ...req.body.attraction });
     req.flash('success', 'Successfully apdated Attraction');
     res.redirect(`/attractions/${attraction._id}`)
 }));
 
-router.delete('/:id', isLoggedIn, catchAsync(async (req, res, next) => {
+router.delete('/:id', isLoggedIn, isAuthor, catchAsync(async (req, res, next) => {
     const { id } = req.params;
     await Attraction.findByIdAndDelete(id);
     req.flash('success', 'Successfully deleted Attraction');
