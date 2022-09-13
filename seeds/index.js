@@ -13,9 +13,10 @@ db.once("open", () => {
 
 const seedDB = async () => {
     await Attraction.deleteMany({});
-    for (let i = 0; i < cities.length; i++) {
+    for (let i = 0; i < 3; i++) {
         const price = Math.floor(Math.random() * 10) + 10;
         const place = new Attraction({
+            author: '631f70ca562a88150066c8f8',
             location: `${cities[i].city}`,
             title: `${cities[i].title}`,
             image: `${cities[i].image}`,

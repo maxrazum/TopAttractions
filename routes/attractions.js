@@ -32,13 +32,14 @@ router.get('/new', isLoggedIn, (req, res) => {
 
 router.post('/', isLoggedIn, validateAttraction, catchAsync(async (req, res, next) => {
     const attraction = new Attraction(req.body.attraction);
+    attraction.author = req.user._id;
     await attraction.save();
     req.flash('success', 'Successfully made a New Attraction');
     res.redirect(`/attractions/${attraction._id}`)
 }));
 
 router.get('/:id', catchAsync(async (req, res, next) => {
-    const attraction = await Attraction.findById(req.params.id).populate('reviews');
+    const attraction = await Attraction.findById(req.params.id).populate('reviews').populate('author');
     if (!attraction) {
         req.flash('error', 'Cannot find that Attraction');
         return res.redirect('/attractions');
