@@ -39,7 +39,8 @@
         <div class="col-6">
             <% if(currentUser) { %>
                 <h2>Leave a Review</h2>
-                <form action="/attractions/<%= attraction._id %>/reviews" method="POST" class="mb-3 validated-form"
+                <p id="status" class="d-none my-0 text-danger">Please Select Rating</p>
+                <form action="/attractions/<%= attraction._id %>/reviews" method="POST" class="mb-3 validated-form reviewForm"
                     novalidate>
                     <fieldset class="starability-basic">
                         <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked
