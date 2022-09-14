@@ -8,18 +8,17 @@ const { isLoggedIn, isAuthor, validateAttraction } = require('../middleware');
 const attractions = require('../controllers/attractions');
 
 
-router.get('/', catchAsync(attractions.index));
+router.route('/')
+    .get(catchAsync(attractions.index))
+    .post(isLoggedIn, validateAttraction, catchAsync(attractions.createAttraction));
 
 router.get('/new', isLoggedIn, attractions.renderNewForm);
 
-router.post('/', isLoggedIn, validateAttraction, catchAsync(attractions.createAttraction));
-
-router.get('/:id', catchAsync(attractions.showAttraction));
+router.route('/:id')
+    .get(catchAsync(attractions.showAttraction))
+    .put(isLoggedIn, isAuthor, validateAttraction, catchAsync(attractions.updateAttraction))
+    .delete(isLoggedIn, isAuthor, catchAsync(attractions.destroyAttraction));
 
 router.get('/:id/edit', isLoggedIn, isAuthor, catchAsync(attractions.renderEditForm));
-
-router.put('/:id', isLoggedIn, isAuthor, validateAttraction, catchAsync(attractions.updateAttraction));
-
-router.delete('/:id', isLoggedIn, isAuthor, catchAsync(attractions.destroyAttraction));
 
 module.exports = router;
