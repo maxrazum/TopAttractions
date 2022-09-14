@@ -3,6 +3,8 @@
 #### FRAMEWORKS
     - Express.js
     - Mongoose
+    - Passport.js
+    - Node.js
 
 #### LANGUAGES
     - Javascript
