@@ -2,14 +2,25 @@ const mongoose = require('mongoose');
 const Review = require('./review');
 const Schema = mongoose.Schema;
 
+
+const ImageSchema = new Schema({
+    url: String,
+    filename: String
+});
+
+// https://res.cloudinary.com/dxn4egwyq/image/upload/v1663350102/TopAttractions/mlewu4qx9z89m8uoavzv.jpg
+
+ImageSchema.virtual('thumbnail').get(function () {
+    return this.url.replace('/upload', '/upload/w_160,h_90');
+});
+
+ImageSchema.virtual('cardImage').get(function () {
+    return this.url.replace('/upload', '/upload/ar_16:9,c_crop');
+});
+
 const AttractionSchema = new Schema({
     title: String,
-    images: [
-        {
-            url: String,
-            filename: String
-        }
-    ],
+    images: [ImageSchema],
     price: Number,
     description: String,
     location: String,

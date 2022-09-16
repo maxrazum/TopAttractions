@@ -1,3 +1,5 @@
+const { cloudinary } = require("../cloudinary");
+
 const Attraction = require('../models/attraction');
 
 
@@ -48,7 +50,13 @@ module.exports.updateAttraction = async (req, res, next) => {
     const imgs = req.files.map(f => ({ url: f.path, filename: f.filename }));
     attraction.images.push(...imgs);
     await attraction.save();
-    req.flash('success', 'Successfully apdated Attraction');
+    if (req.body.deleteImages) {
+        for (let filename of req.body.deleteImages) {
+            await cloudinary.uploader.destroy(filename);
+        }
+        await attraction.updateOne({ $pull: { images: { filename: { $in: req.body.deleteImages } } } })
+    }
+    req.flash('success', 'Successfully updated Attraction');
     res.redirect(`/attractions/${attraction._id}`)
 }
 
