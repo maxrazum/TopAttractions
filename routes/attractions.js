@@ -20,7 +20,7 @@ router.get('/new', isLoggedIn, attractions.renderNewForm);
 
 router.route('/:id')
     .get(catchAsync(attractions.showAttraction))
-    .put(isLoggedIn, isAuthor, validateAttraction, catchAsync(attractions.updateAttraction))
+    .put(isLoggedIn, isAuthor, upload.array('image'), validateAttraction, catchAsync(attractions.updateAttraction))
     .delete(isLoggedIn, isAuthor, catchAsync(attractions.destroyAttraction));
 
 router.get('/:id/edit', isLoggedIn, isAuthor, catchAsync(attractions.renderEditForm));
