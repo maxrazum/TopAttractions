@@ -1,5 +1,9 @@
 const express = require('express');
+const multer = require('multer');
 const router = express.Router();
+
+const { storage } = require('../cloudinary');
+const upload = multer({ storage });
 
 const catchAsync = require('../utils/catchAsync');
 
@@ -10,7 +14,7 @@ const attractions = require('../controllers/attractions');
 
 router.route('/')
     .get(catchAsync(attractions.index))
-    .post(isLoggedIn, validateAttraction, catchAsync(attractions.createAttraction));
+    .post(isLoggedIn, upload.array('image'), validateAttraction, catchAsync(attractions.createAttraction));
 
 router.get('/new', isLoggedIn, attractions.renderNewForm);
 

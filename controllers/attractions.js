@@ -12,6 +12,7 @@ module.exports.renderNewForm = (req, res) => {
 
 module.exports.createAttraction = async (req, res, next) => {
     const attraction = new Attraction(req.body.attraction);
+    attraction.images = req.files.map(f => ({ url: f.path, filename: f.filename }));
     attraction.author = req.user._id;
     await attraction.save();
     req.flash('success', 'Successfully made a New Attraction');

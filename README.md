@@ -14,6 +14,13 @@
 #### LIBRARIES
     - MongoDB
 
+### Design:
+
+1) Starability.css - Accessible rating with animations on top
+```
+https://github.com/LunarLogic/starability
+```
+
 
 ## Run it locally (written for Windows and VSCode)
 ### ! MongoDB and Node.js must be pre-installed
@@ -54,7 +61,15 @@ npm i connect-flash
 ```
 npm i passport passport-local passport-local-mongoose
 ```
-10) Run the App:
+10) Install multer:
+```
+npm i multer
+```
+11) Install cloudinary and multer-storage-cloudinary:
+```
+npm i cloudinary multer-storage-cloudinary
+```
+12) Run the App:
 ```
 nodemon index.js
 ```

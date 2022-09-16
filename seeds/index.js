@@ -19,9 +19,19 @@ const seedDB = async () => {
             author: '631f70ca562a88150066c8f8',
             location: `${cities[i].city}`,
             title: `${cities[i].title}`,
-            image: `${cities[i].image}`,
+            // image: `${cities[i].image}`,
             description: 'North America is filled with must see attractions. Hundreds of locations draw millions of tourists to natural landmarks, historic sites and exciting places. Some are old, some are new. Some are geological wonders. Some are manmade structures.',
-            price
+            price,
+            images: [
+                {
+                    url: 'https://res.cloudinary.com/dxn4egwyq/image/upload/v1663286846/TopAttractions/gklewb4arfn7cg0khpnx.jpg',
+                    filename: 'TopAttractions/gklewb4arfn7cg0khpnx',
+                }, {
+                    url: 'https://res.cloudinary.com/dxn4egwyq/image/upload/v1663286848/TopAttractions/v0fupne75q5oseo2r4iw.jpg',
+                    filename: 'TopAttractions/v0fupne75q5oseo2r4iw',
+
+                }
+            ]
         })
         await place.save();
     }
