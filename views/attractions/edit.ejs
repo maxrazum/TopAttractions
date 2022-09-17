@@ -43,7 +43,10 @@
                 </div>
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Add Image<br>[Max: 10 Mb]</label>
-                    <input class="form-control" type="file" id="formFile" name="image">
+                    <input class="form-control" type="file" id="formFile" name="image" required>
+                    <div class="invalid-feedback">
+                        Please provide an image.
+                    </div>
                 </div>
                 <div class="mb-3">
                     <h5>Delete Images</h5>

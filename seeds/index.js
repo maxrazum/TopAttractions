@@ -16,12 +16,18 @@ const seedDB = async () => {
     for (let i = 0; i < 3; i++) {
         const price = Math.floor(Math.random() * 10) + 10;
         const place = new Attraction({
+            //YOUR USER ID
             author: '631f70ca562a88150066c8f8',
             location: `${cities[i].city}`,
             title: `${cities[i].title}`,
             // image: `${cities[i].image}`,
             description: 'North America is filled with must see attractions. Hundreds of locations draw millions of tourists to natural landmarks, historic sites and exciting places. Some are old, some are new. Some are geological wonders. Some are manmade structures.',
             price,
+            geometry: {
+                type: "Point",
+                // Set default city to Toronto
+                coordinates: [-79.3832, 43.6532]
+            },
             images: [
                 {
                     url: 'https://res.cloudinary.com/dxn4egwyq/image/upload/v1663372685/TopAttractions/1_5_yiffzg.jpg',
