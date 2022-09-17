@@ -69,7 +69,11 @@ npm i multer
 ```
 npm i cloudinary multer-storage-cloudinary
 ```
-12) Run the App:
+12) Install @mapbox/mapbox-sdk:
+```
+npm install @mapbox/mapbox-sdk
+```
+13) Run the App:
 ```
 nodemon index.js
 ```

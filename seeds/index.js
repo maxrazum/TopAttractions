@@ -24,11 +24,11 @@ const seedDB = async () => {
             price,
             images: [
                 {
-                    url: 'https://res.cloudinary.com/dxn4egwyq/image/upload/v1663286846/TopAttractions/gklewb4arfn7cg0khpnx.jpg',
-                    filename: 'TopAttractions/gklewb4arfn7cg0khpnx',
+                    url: 'https://res.cloudinary.com/dxn4egwyq/image/upload/v1663372685/TopAttractions/1_5_yiffzg.jpg',
+                    filename: 'TopAttractions/1_5_yiffzg',
                 }, {
-                    url: 'https://res.cloudinary.com/dxn4egwyq/image/upload/v1663286848/TopAttractions/v0fupne75q5oseo2r4iw.jpg',
-                    filename: 'TopAttractions/v0fupne75q5oseo2r4iw',
+                    url: 'https://res.cloudinary.com/dxn4egwyq/image/upload/v1663372686/TopAttractions/1_3_provas.jpg',
+                    filename: 'TopAttractions/1_3_provas',
 
                 }
             ]
