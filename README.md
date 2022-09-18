@@ -81,7 +81,11 @@ npm i express-mongo-sanitize
 ```
 npm i sanitize-html
 ```
-15) Run the App:
+15) Install helmet:
+```
+npm i helmet
+```
+16) Run the App:
 ```
 nodemon index.js
 ```
