@@ -18,6 +18,8 @@ ImageSchema.virtual('cardImage').get(function () {
     return this.url.replace('/upload', '/upload/ar_16:9,c_crop');
 });
 
+const opts = { toJSON: { virtuals: true } };
+
 const AttractionSchema = new Schema({
     title: String,
     images: [ImageSchema],
@@ -45,6 +47,11 @@ const AttractionSchema = new Schema({
             ref: 'Review'
         }
     ]
+}, opts);
+
+AttractionSchema.virtual('properties.popUpMarkup').get(function () {
+    return `<strong><a href="/attractions/${this._id}">${this.title}</a><strong>
+    <p>${this.description.substring(0, 50)}...</p>`
 });
 
 AttractionSchema.post('findOneAndDelete', async function (doc) {

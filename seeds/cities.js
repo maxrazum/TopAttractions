@@ -128,7 +128,7 @@ module.exports = [
     {
         city: "Halawa",
         latitude: 21.3676,
-        longitude: -113.5002,
+        longitude: -157.9389,
         title: "Pearl Harbor and USS Arizona Memorial",
         image: 'https://source.unsplash.com/qZ6sCyV7Sfs',
     },
