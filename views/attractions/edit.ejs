@@ -2,7 +2,7 @@
 
     <div class="row">
         <h1 class="text-center">Edit Attraction</h1>
-        <div class="col-6 offset-3">
+        <div class="col-md-6 offset-md-3">
             <form action="/attractions/<%= attraction._id %>?_method=PUT" method="POST" novalidate
                 class="validated-form" enctype="multipart/form-data">
                 <div class="mb-3">
@@ -50,7 +50,7 @@
                 </div>
                 <div class="mb-3">
                     <h5>Delete Images</h5>
-                    <div class="row row-cols-1 row-cols-md-4 g-4 mb-3">
+                    <div class="row row-cols-1 row-cols-4 g-4 mb-3">
                         <% attraction.images.forEach((img, i)=> { %>
 
                             <div class="col">
