@@ -13,7 +13,7 @@ db.once("open", () => {
 
 const seedDB = async () => {
     await Attraction.deleteMany({});
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < cities.length; i++) {
         const price = Math.floor(Math.random() * 10) + 10;
         const place = new Attraction({
             //YOUR USER ID
@@ -26,7 +26,10 @@ const seedDB = async () => {
             geometry: {
                 type: "Point",
                 // Set default city to Toronto
-                coordinates: [-79.3832, 43.6532]
+                coordinates: [
+                    cities[i].longitude,
+                    cities[i].latitude,
+                ]
             },
             images: [
                 {
