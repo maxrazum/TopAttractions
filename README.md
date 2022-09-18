@@ -73,7 +73,15 @@ npm i cloudinary multer-storage-cloudinary
 ```
 npm install @mapbox/mapbox-sdk
 ```
-13) Run the App:
+13) Install express-mongo-sanitize:
+```
+npm i express-mongo-sanitize
+```
+14) Install sanitize-html:
+```
+npm i sanitize-html
+```
+15) Run the App:
 ```
 nodemon index.js
 ```
