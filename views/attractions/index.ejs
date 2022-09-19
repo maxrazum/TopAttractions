@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate') %>
 
     <div id="cluster-map"></div>
-    <div class="container">
+    <div class="container mt-5 mb-5">
 
         <h1>All Attractions</h1>
 
@@ -9,23 +9,20 @@
             <div class="card mb-3">
                 <div class="row">
                     <div class="col-md-4">
-                        <img class="img-fluid" alt="" src="<%= attraction.images[0].url %>">
+                        <img class="card-img-top" id="indexImage" alt="" src="<%= attraction.images[0].url %>">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">
-                                <%= attraction.title %>
-                            </h5>
-                            <h5 class="card-text">
-                                <%= attraction.description %>
-                            </h5>
-                            <p class="card-text">
-                                <small class="text-muted">
-                                    <%= attraction.location %>
-                                </small>
+                            <h4 class="card-title">
+                                <%= attraction.title.substring(0, 50) %>
+                            </h4>
+                            <p class="card-text text-muted">
+                                <%= attraction.location.substring(0, 50) %>
                             </p>
-                            <a class="btn btn-primary" href="/attractions/<%= attraction._id %>">View <%=
-                                    attraction.title %></a>
+                            <h6 class="card-text">
+                                <%= attraction.description.substring(0, 250) %>
+                            </h6>
+                            <a class="btn btn-primary mt-4" href="/attractions/<%= attraction._id %>">View</a>
                         </div>
                     </div>
                 </div>

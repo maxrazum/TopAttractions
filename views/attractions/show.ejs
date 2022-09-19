@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="/stylesheets/stars.css">
 
     <div class="row">
-        <div class="col-6">
+        <div class="col-md-6">
             <div id="attractionCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <% attraction.images.forEach((img, i)=> { %>
@@ -37,7 +37,7 @@
                     <li class="list-group-item text-muted">
                         <%= attraction.location %>
                     </li>
-                    <li class="list-group-item">Submitted by <%= attraction.author.username %>
+                    <li class="list-group-item">Submitted by <b><%= attraction.author.username %></b>
                     </li>
                     <li class="list-group-item">$<%= attraction.price %>
                     </li>
@@ -56,7 +56,7 @@
                         </div>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-md-6">
             <div id="map"></div>
 
             <% if(currentUser) { %>
@@ -80,7 +80,7 @@
                     </fieldset>
                     <div class="mb-3">
                         <label class="form-label" for="body">Review Text</label>
-                        <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3"
+                        <textarea class="form-control" name="review[body]" id="body" cols="30" rows="5" maxlength="500"
                             required></textarea>
                         <div class="invalid-feedback">
                             Please provide a review.

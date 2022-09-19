@@ -6,14 +6,15 @@
             <form action="/attractions" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label class="form-label" for="title">Title</label>
-                    <input class="form-control" type="text" id="title" name="attraction[title]" required>
+                    <input class="form-control" type="text" id="title" name="attraction[title]" maxlength="50" required>
                     <div class="invalid-feedback">
                         Please provide a title.
                     </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="location">Location</label>
-                    <input class="form-control" type="text" id="location" name="attraction[location]" required>
+                    <input class="form-control" type="text" id="location" name="attraction[location]" maxlength="50"
+                        required>
                     <div class="invalid-feedback">
                         Please provide a location.
                     </div>
@@ -38,8 +39,8 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="description">Description</label>
-                    <textarea class="form-control" rows="5" type="text" id="description" name="attraction[description]"
-                        required></textarea>
+                    <textarea class="form-control" rows="6" type="text" id="description" name="attraction[description]"
+                        maxlength="500" required></textarea>
                     <div class="invalid-feedback">
                         Please provide a description.
                     </div>

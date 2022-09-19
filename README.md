@@ -85,7 +85,15 @@ npm i sanitize-html
 ```
 npm i helmet
 ```
-16) Run the App:
+16) Install connect-mongo:
+```
+npm i connect-mongo
+```
+17) Install mongoose-paginate-v2:
+```
+mongoose-paginate-v2
+```
+18) Run the App:
 ```
 nodemon index.js
 ```
