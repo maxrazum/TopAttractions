@@ -91,7 +91,7 @@ npm i connect-mongo
 ```
 17) Install mongoose-paginate-v2:
 ```
-mongoose-paginate-v2
+npm i mongoose-paginate-v2
 ```
 18) Run the App:
 ```

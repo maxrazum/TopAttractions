@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2');
 const Review = require('./review');
 const Schema = mongoose.Schema;
 
@@ -63,5 +64,7 @@ AttractionSchema.post('findOneAndDelete', async function (doc) {
         })
     }
 });
+
+AttractionSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('Attraction', AttractionSchema);

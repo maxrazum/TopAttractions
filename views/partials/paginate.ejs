@@ -1,0 +1,30 @@
+<div class="my-2">
+    <nav aria-label="Attraction Pagination">
+        <ul class="pagination pagination-sm justify-content-center">
+            <% if(currentPage - 1) { %>
+                <li class="page-item">
+                    <a class="page-link" href="/attractions?page=<%= attractions.page - 1 %>">
+                        <span area-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <% } %>
+                    <% if(attractions.totalPages> 1 && attractions.docs.length) { %>
+                        <% for(let i=startPage; i <=endPage; i++) { %>
+                            <li class="page-item">
+                                <a class="page-link" href="/attractions?page=<%= i %>" <%=i===attractions.page
+                                    ? 'style=color:#fff;background-color:#6aa84f;' : '' %>>
+                                    <%= i %>
+                                </a>
+                            </li>
+                            <% } %>
+                                <% } %>
+                                    <% if((currentPage + 1) <=totalPages) { %>
+                                        <li class="page-item">
+                                            <a class="page-link" href="/attractions?page=<%= attractions.page + 1 %>">
+                                                <span area-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                        <% } %>
+        </ul>
+    </nav>
+</div>

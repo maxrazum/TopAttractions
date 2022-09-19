@@ -7,9 +7,48 @@ const { cloudinary } = require("../cloudinary");
 const Attraction = require('../models/attraction');
 
 
+// module.exports.index = async (req, res, next) => {
+//     const attractions = await Attraction.find({});
+//     res.render('attractions/index', { attractions })
+// }
+
 module.exports.index = async (req, res, next) => {
-    const attractions = await Attraction.find({});
-    res.render('attractions/index', { attractions })
+    const attractions = await Attraction.paginate(
+        {},
+        {
+            page: req.query.page || 1,
+            limit: 10,
+            sort: "-_id",
+        }
+    );
+    attractions.page = Number(attractions.page);
+    let totalPages = attractions.totalPages;
+    let currentPage = attractions.page;
+    let startPage;
+    let endPage;
+
+    if (totalPages <= 10) {
+        startPage = 1;
+        endPage = totalPages;
+    } else {
+        if (currentPage <= 6) {
+            startPage = 1;
+            endPage = 10;
+        } else if (currentPage + 4 >= totalPages) {
+            startPage = totalPages - 9;
+            endPage = totalPages;
+        } else {
+            startPage = currentPage - 5;
+            endPage = currentPage + 4;
+        }
+    }
+    res.render('attractions/index', {
+        attractions,
+        startPage,
+        endPage,
+        currentPage,
+        totalPages
+        });
 }
 
 module.exports.renderNewForm = (req, res) => {
