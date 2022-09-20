@@ -13,6 +13,10 @@
     object-fit: cover;
 }
 
+#editBack {
+    color: black;
+}
+
 h4 {
     font-weight: bold;
     color: lightslategray;
@@ -22,6 +26,14 @@ b {
     text-transform: uppercase;
 }
 
-ul, h4, h5, h6, p {
+ul,
+h4,
+h5,
+h6,
+p {
     text-transform: capitalize;
+}
+
+body {
+    background: #F5B892;
 }

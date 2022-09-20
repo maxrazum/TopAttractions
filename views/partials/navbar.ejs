@@ -1,4 +1,4 @@
-<nav class="navbar sticky-top navbar-expand-lg" style="background-color: #e7fde3;">
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">TopAttractions</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -13,11 +13,11 @@
             </div>
             <div class="navbar-nav ms-auto">
                 <% if(!currentUser) {%>
-                <a class="nav-link" href="/login">Login</a>
-                <a class="nav-link" href="/register">Register</a>
-                <% } else { %>
-                <a class="nav-link" href="/logout">Logout</a>
-                <% } %> 
+                    <a class="nav-link" href="/login">Login</a>
+                    <a class="nav-link" href="/register">Register</a>
+                    <% } else { %>
+                        <a class="nav-link" href="/logout">Logout</a>
+                        <% } %>
             </div>
         </div>
     </div>

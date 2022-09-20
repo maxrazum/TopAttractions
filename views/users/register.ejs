@@ -11,21 +11,21 @@
                         <form action="/register" method="POST" class="validated-form" novalidate>
                             <div class="mb-3">
                                 <label class="form-label" for="username">Username</label>
-                                <input class="form-control" type="text" id="username" name="username" autofocus required>
+                                <input class="form-control" type="text" id="username" name="username" maxlength="20" autofocus required>
                                 <div class="invalid-feedback">
                                     Please provide UserName.
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="email">Email</label>
-                                <input class="form-control" type="email" id="email" name="email" required>
+                                <input class="form-control" type="email" id="email" name="email" maxlength="40" required>
                                 <div class="invalid-feedback">
                                     Please provide Email.
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="password">Password</label>
-                                <input class="form-control" type="password" id="password" name="password" required>
+                                <input class="form-control" type="password" id="password" name="password" maxlength="70" required>
                                 <div class="invalid-feedback">
                                     Please provide Password.
                                 </div>

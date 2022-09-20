@@ -6,11 +6,11 @@
             <form action="/attractions/<%= attraction._id %>?_method=PUT" method="POST" novalidate
                 class="validated-form" enctype="multipart/form-data">
                 <div class="mb-3">
-                    <label class="form-label" for="title">Title</label>
+                    <label class="form-label" for="title">Title<br>[min: 8 characters]</label>
                     <input class="form-control" type="text" id="title" name="attraction[title]"
-                        value="<%= attraction.title %>" maxlength="50" required>
+                        value="<%= attraction.title %>" maxlength="50" minlength="8" required>
                     <div class="invalid-feedback">
-                        Please provide a title.
+                        Please provide a title. Minimum 8 characters.
                     </div>
                 </div>
                 <div class="mb-3">
@@ -26,23 +26,23 @@
                     <div class="input-group">
                         <span class="input-group-text" id="price-label">$</span>
                         <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
-                            aria-describedby="price-label" name="attraction[price]" value="<%= attraction.price %>"
-                            required>
+                            aria-describedby="price-label" name="attraction[price]" maxlength="7"
+                            value="<%= attraction.price %>" required>
                         <div class="invalid-feedback">
                             Please provide a price.
                         </div>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="description">Description</label>
+                    <label class="form-label" for="description">Description<br>[min: 150 characters]</label>
                     <textarea class="form-control" rows="6" type="text" id="description" name="attraction[description]"
-                        maxlength="500" required><%= attraction.description %></textarea>
+                        maxlength="500" minlength="150" required><%= attraction.description %></textarea>
                     <div class="invalid-feedback">
-                        Please provide a description.
+                        Please provide a description. Minimum 150 characters.
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="formFile" class="form-label">Add Image<br>[Max: 10 Mb]</label>
+                    <label for="formFile" class="form-label">Add Image<br>[max: 10 Mb]</label>
                     <input class="form-control" type="file" id="formFile" name="image" required>
                     <div class="invalid-feedback">
                         Please provide an image.
@@ -67,10 +67,10 @@
                             <% }) %>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <button class="btn btn-info">Update Attraction</button>
+                <div class="mb-4 mt-4">
+                    <button class="btn btn-success">Update Attraction</button>
                 </div>
             </form>
-            <a href="/attractions/<%= attraction._id %> ">Back to Attraction</a>
+            <a href="/attractions/<%= attraction._id %> " id="editBack">Back to Attraction</a>
         </div>
     </div>

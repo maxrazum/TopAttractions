@@ -5,10 +5,11 @@
         <div class="col-md-6 offset-md-3">
             <form action="/attractions" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
                 <div class="mb-3">
-                    <label class="form-label" for="title">Title</label>
-                    <input class="form-control" type="text" id="title" name="attraction[title]" maxlength="50" required>
+                    <label class="form-label" for="title">Title<br>[min: 8 characters]</label>
+                    <input class="form-control" type="text" id="title" name="attraction[title]" maxlength="50"
+                        minlength="8" required>
                     <div class="invalid-feedback">
-                        Please provide a title.
+                        Please provide a title. Minimum 8 characters.
                     </div>
                 </div>
                 <div class="mb-3">
@@ -31,31 +32,30 @@
                     <div class="input-group">
                         <span class="input-group-text" id="price-label">$</span>
                         <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
-                            aria-describedby="price-label" name="attraction[price]" required>
+                            aria-describedby="price-label" name="attraction[price]" maxlength="7" required>
                         <div class="invalid-feedback">
                             Please provide a price.
                         </div>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="description">Description</label>
+                    <label class="form-label" for="description">Description<br>[min: 150 characters]</label>
                     <textarea class="form-control" rows="6" type="text" id="description" name="attraction[description]"
-                        maxlength="500" required></textarea>
+                        maxlength="500" minlength="150" required></textarea>
                     <div class="invalid-feedback">
-                        Please provide a description.
+                        Please provide a description. Minimum 150 characters.
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="formFile" class="form-label">Choose Image<br>[Max: 10 Mb]</label>
+                    <label for="formFile" class="form-label">Choose Image<br>[max: 10 Mb]</label>
                     <input class="form-control" type="file" id="formFile" name="image" required>
                     <div class="invalid-feedback">
                         Please provide an image.
                     </div>
                 </div>
-                <div class="mb-3">
+                <div class="mb-5 mt-5">
                     <button class="btn btn-success">Add Attraction</button>
                 </div>
             </form>
-            <a href="/attractions">All Attractions</a>
         </div>
     </div>

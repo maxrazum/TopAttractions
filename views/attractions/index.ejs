@@ -6,30 +6,30 @@
         <h1 class="text-center">All Attractions</h1>
         <%- include('../partials/paginate') %>
 
-        <% for (let attraction of attractions.docs) {%>
-            <div class="card mb-3">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img class="card-img-top" id="indexImage" alt="" src="<%= attraction.images[0].url %>">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <%= attraction.title.substring(0, 50) %>
-                            </h4>
-                            <p class="card-text text-muted">
-                                <%= attraction.location.substring(0, 50) %>
-                            </p>
-                            <h6 class="card-text">
-                                <%= attraction.description.substring(0, 250) %>
-                            </h6>
-                            <a class="btn btn-primary mt-4" href="/attractions/<%= attraction._id %>">View</a>
+            <% for (let attraction of attractions.docs) {%>
+                <div class="card mb-3">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img class="card-img-top" id="indexImage" alt="" src="<%= attraction.images[0].url %>">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <%= attraction.title.substring(0, 50) %>
+                                </h4>
+                                <p class="card-text text-muted">
+                                    <%= attraction.location.substring(0, 50) %>
+                                </p>
+                                <h6 class="card-text">
+                                    <%= attraction.description.substring(0, 250) %>
+                                </h6>
+                                <a class="btn btn-primary mt-4" href="/attractions/<%= attraction._id %>">View</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <% } %>
-            <%- include('../partials/paginate') %>
+                <% } %>
+                    <%- include('../partials/paginate') %>
     </div>
 
     <script>
