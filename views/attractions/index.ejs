@@ -9,10 +9,10 @@
             <% for (let attraction of attractions.docs) {%>
                 <div class="card mb-3">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-lg-4">
                             <img class="card-img-top" id="indexImage" alt="" src="<%= attraction.images[0].url %>">
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-lg-8">
                             <div class="card-body">
                                 <h4 class="card-title">
                                     <%= attraction.title.substring(0, 50) %>
@@ -21,7 +21,7 @@
                                     <%= attraction.location.substring(0, 50) %>
                                 </p>
                                 <h6 class="card-text">
-                                    <%= attraction.description.substring(0, 250) %>
+                                    <%= attraction.description.substring(0, 250) %>...
                                 </h6>
                                 <a class="btn btn-primary mt-4" href="/attractions/<%= attraction._id %>">View</a>
                             </div>

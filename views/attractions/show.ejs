@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="/stylesheets/stars.css">
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-lg-6">
             <div id="attractionCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <% attraction.images.forEach((img, i)=> { %>
@@ -34,14 +34,14 @@
                     </p>
                 </div>
                 <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Admission fee: $<%= attraction.price %>
+                    </li>
                     <li class="list-group-item text-muted">
                         <%= attraction.location %>
                     </li>
                     <li class="list-group-item">Submitted by <b>
                             <%= attraction.author.username %>
                         </b>
-                    </li>
-                    <li class="list-group-item">$<%= attraction.price %>
                     </li>
                 </ul>
                 <% if( currentUser && attraction.author.equals(currentUser._id)) { %>
@@ -55,7 +55,7 @@
                     <% } %>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-lg-6">
             <div id="map"></div>
 
             <% if(currentUser) { %>

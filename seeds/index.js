@@ -17,11 +17,11 @@ const seedDB = async () => {
         const price = Math.floor(Math.random() * 10) + 10;
         const place = new Attraction({
             //YOUR USER ID
-            author: '631f70ca562a88150066c8f8',
+            author: '632a2f6366f9c88e14c13263',
             location: `${cities[i].city}`,
             title: `${cities[i].title}`,
             // image: `${cities[i].image}`,
-            description: 'North America is filled with must see attractions. Hundreds of locations draw millions of tourists to natural landmarks, historic sites and exciting places. Some are old, some are new. Some are geological wonders. Some are manmade structures.',
+            description: `${cities[i].description}`,
             price,
             geometry: {
                 type: "Point",
@@ -33,12 +33,8 @@ const seedDB = async () => {
             },
             images: [
                 {
-                    url: 'https://res.cloudinary.com/dxn4egwyq/image/upload/v1663372685/TopAttractions/cnTower2_p80ujz.jpg',
-                    filename: 'TopAttractions/cnTower2_p80ujz',
-                }, {
-                    url: 'https://res.cloudinary.com/dxn4egwyq/image/upload/v1663372686/TopAttractions/cnTower_ligq1r.jpg',
-                    filename: 'TopAttractions/cnTower_ligq1r',
-
+                    url: `${cities[i].url}`,
+                    filename: `${cities[i].filename}`,
                 }
             ]
         })

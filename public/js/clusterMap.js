@@ -46,11 +46,11 @@ paint: {
 'circle-radius': [
 'step',
 ['get', 'point_count'],
-15,
-4,
 20,
+4,
+25,
 10,
-25
+30
 ]
 }
 });
@@ -74,7 +74,7 @@ source: 'attractions',
 filter: ['!', ['has', 'point_count']],
 paint: {
 'circle-color': '#11b4da',
-'circle-radius': 4,
+'circle-radius': 10,
 'circle-stroke-width': 1,
 'circle-stroke-color': '#fff'
 }
