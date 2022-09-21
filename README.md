@@ -1,99 +1,106 @@
 # TopAttractions
+This is the full stack CRUD project that allows users to view, post, edit, delete, and leave reviews on the attractions.
 
-#### FRAMEWORKS
-    - Express.js
-    - Mongoose
-    - Passport.js
-    - Node.js
-
-#### LANGUAGES
+## LANGUAGES
     - Javascript
     - HTML
     - CSS
 
-#### LIBRARIES
-    - MongoDB
+### Built with
 
-### Design:
+- [Node.js](https://nodejs.org/en/) - Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
+- [Express.js](https://expressjs.com/) - Fast, unopinionated, minimalist web framework for Node.js.
+- [MongoDB](https://www.mongodb.com/de-de) - The most advanced cloud database service.
+- [Mongoose](https://mongoosejs.com/) - Elegant mongodb object modeling for node.js.
+- [Heroku](https://www.heroku.com/) - Build and deploy data-driven apps with fully managed data services.
 
-1) Starability.css - Accessible rating with animations on top
+#### Other Tools
+
+- [Bootstrap](https://getbootstrap.com/) - The world’s most popular framework for building responsive, mobile-first sites.
+- [Passport](http://www.passportjs.org/) - Passport is authentication middleware for Node.js.
+- [Mapbox](https://www.mapbox.com/) - Precise location data and powerful developer tools to change the way we navigate the world.
+- [Cloudinary](https://cloudinary.com/) - Transform images and videos to load faster with no visual degradation.
+
+#### Design:
+
+- [Starability.cs](https://github.com/LunarLogic/starability) - Accessible rating with animations on top.
+
+## Previews
+#### Register
+<img src="assets/gif/register.gif" width="100%" alt="register">
+
+#### Login
+<img src="assets/gif/login.gif" width="100%" alt="login">
+
+#### All Attractions
+<img src="assets/gif/allAttractions.gif" width="100%" alt="all attractions">
+
+#### Show Attraction
+<img src="assets/gif/showAttraction.gif" width="100%" alt="show attraction">
+
+#### Create Review
+<img src="assets/gif/createReview.gif" width="100%" alt="create review">
+
+#### Delete Review
+<img src="assets/gif/deleteReview.gif" width="100%" alt="delete review">
+
+#### Create Attraction
+<img src="assets/gif/createAttraction.gif" width="100%" alt="create attraction">
+
+#### Edit Attraction
+<img src="assets/gif/editAttraction.gif" width="100%" alt="edit attraction">
+
+#### Delete Attraction
+<img src="assets/gif/deleteAttraction.gif" width="100%" alt="delete attraction">
+
+#### Logout
+<img src="assets/gif/logout.gif" width="100%" alt="logout">
+
+## To run on your local machine:
+### Prerequisties:
+1. You should have the following installed on your machine:
+- Node
+- Mongo
+- Git
+- VS Code
+2. You should have the following accounts to gain access to keys, and tokens required for the project:
+- Cloudinary
+- Mapbox
+
+### Steps:
+1. On the main repository, click the green Code button and copy the SSH.
+
+2. Go or create a directory where you want the repository to be included then type this script on your terminal:
 ```
-https://github.com/LunarLogic/starability
+git clone [SSH HERE]
+```
+3. Open the cloned repository on VS Code.
+4. On your terminal, download all the dependencies by typing
+   `npm i` or `npm install`
+5. Create a .env file to store the required keys for the project
+
+    *replace value with the appropriate keys from the required accounts mentioned in the prerequisites*
+ ```
+CLOUDINARY_CLOUD_NAME=[value]
+CLOUDINARY_KEY=[value]
+CLOUDINARY_SECRET=[value]
+MAPBOX_TOKEN=[value]
 ```
 
-
-## Run it locally (written for Windows and VSCode)
-### ! MongoDB and Node.js must be pre-installed
-
-1) Create a directory and clone the repo in it:
+6. Open a new terminal and type `mongod` to connect the projects on your local database. The project will not start until this is not opened
+7. Now to seeds your database, on the previous terminal, type
+ ```
+ node seeds/index.js
 ```
-git clone https://github.com/maxrazum/TopAttractions
+8. _(!! Photos of Attractions won't be available !! you'll have to upload them manually)._
+9. Hit **CTRL+C** to exit the current process.
+10. Now, you are ready to run the program by typing either of the script on your terminal:
 ```
-2) Install Express, EJS and Mongoose:
+node app.js
 ```
-npm i express ejs mongoose
+  or _(recommended)_
 ```
-3) Install nodemon:
+nodemon app.js
 ```
-npm i nodemon
-```
-4) Install override:
-```
-npm i method-override
-```
-5) Install ejs-mate:
-```
-npm i ejs-mate
-```
-6) Install joi:
-```
-npm i joi
-```
-7) Install express session:
-```
-npm i express-session
-```
-8) Install flash:
-```
-npm i connect-flash
-```
-9) Install passport:
-```
-npm i passport passport-local passport-local-mongoose
-```
-10) Install multer:
-```
-npm i multer
-```
-11) Install cloudinary and multer-storage-cloudinary:
-```
-npm i cloudinary multer-storage-cloudinary
-```
-12) Install @mapbox/mapbox-sdk:
-```
-npm install @mapbox/mapbox-sdk
-```
-13) Install express-mongo-sanitize:
-```
-npm i express-mongo-sanitize
-```
-14) Install sanitize-html:
-```
-npm i sanitize-html
-```
-15) Install helmet:
-```
-npm i helmet
-```
-16) Install connect-mongo:
-```
-npm i connect-mongo
-```
-17) Install mongoose-paginate-v2:
-```
-npm i mongoose-paginate-v2
-```
-18) Run the App:
-```
-nodemon index.js
-```
+<br>
+11. Once you see "Database connected", go to your preferred browser, then go to *localhost:3000*
