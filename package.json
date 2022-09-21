@@ -1,4 +1,8 @@
 {
+  "name": "topattractions",
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "@mapbox/mapbox-sdk": "^0.13.5",
     "cloudinary": "^1.32.0",
